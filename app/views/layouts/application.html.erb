@@ -2,7 +2,6 @@
 <html>
   <head>
     <title>HomeListApp</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,8 +10,14 @@
   </head>
 
   <body>
+    <header>
+      <%= render "layouts/navigation/public" %>
+    </header>
+
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
     <%= yield %>
+
+    
   </body>
 </html>
