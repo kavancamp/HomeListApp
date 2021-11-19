@@ -10,9 +10,13 @@
   </head>
 
   <body>
-    <header>
-      <%= render "layouts/navigation/public" %>
-    </header>
+    <% if ["public", "devise"].include?(controller.controller_name) %>
+      <header>
+        <%= render "layouts/navigation/public" %>
+      </header>
+    <% else %>
+     <%= render "layouts/navigation/dashboard" %>
+    <% end %>
 
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
