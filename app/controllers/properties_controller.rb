@@ -1,6 +1,6 @@
 class PropertiesController < ApplicationController
-    before_action :set_property, only: [:show, :edit, :update, :destroy]
-    before_action :authenticate_account, only: [:new, :create, :destroy]
+    #before_action :set_property, only: [:show, :edit, :update, :destroy]
+    #before_action :authenticate_account!, only: [:new, :create, :destroy]
 
     def index
         @properties = Property.all
@@ -31,11 +31,11 @@ class PropertiesController < ApplicationController
         end
     end
 
-    def update
-        respond_to do |format|
-            format.html {redirect_to @property, notice: 'Updated!'}
-            format.json { render :show, status: :ok, location: @property}
-        else
-            format.html {render :edit }
-    end
+    #def update
+        #respond_to do |format|
+           # format.html {redirect_to @property, notice: 'Updated!'}
+           # format.json { render :show, status: :ok, location: @property}
+        #else
+            #format.html {render :edit }
+   # end
 end

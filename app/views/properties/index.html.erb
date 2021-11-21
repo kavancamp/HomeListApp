@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+<h1> Properties</h1>
+
+<table class="table table-striped"> 
+    <thead>
+        <tr>
+        <th>Title</th>
+        <th>Address</th>
+        <th>Price</th>
+        <th>Bedrooms</th>
+        <th>Bathrooms</th>
+        </tr>
+    </thead>
+    <tbody>
+    <% @properties.each do |property| %>
+        <tr>
+        <td><%= property.title %></td>
+        <td><%= property.address %></td>
+        <td><%= property.price %></td>
+        <td><%= property.bedrooms %></td>
+        <td><%= property.bathrooms %></td>
+        <td><%= %></td>
+        <td><%= %></td>
+        <td><%= %></td>
+        </tr>
+    <% end %>
+    </tbody>
+</table>
+    <br>
+    <%= link_to  'New Property', new_property_path %>
