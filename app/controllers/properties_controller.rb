@@ -28,4 +28,12 @@ class PropertiesController < ApplicationController
             end
         end
     end
+
+    def update
+        respond_to do |format|
+            format.html {redirect_to @property, notice: 'Updated!'}
+            format.json { render :show, status: :ok, location: @property}
+        else
+            format.html {render :edit }
+    end
 end
