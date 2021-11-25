@@ -1,27 +1,27 @@
 <%= form_with(model: property, local: true) do |form| %>
-    <%= render "layouts/validation", obj: @property %>
+    <%= render "layouts/validation", item: @property %>
 
-    <div class="field">
+    <div class="form-group">
       <%= form.label :title %>
       <%= form.text_field :title, class: "form-control" %>
     </div>
-    <div class="field">
+    <div class="form-group">
         <%= form.label :address %>
         <%= form.text_field :address, class: "form-control" %>
     </div>
-    <div class="field">
+    <div class="form-group">
         <%= form.label :price %>
         <%= form.text_field :price, class: "form-control" %>
     </div>
-    <div class="field">
+    <div class="form-group">
         <%= form.label :bedrooms %>
         <%= form.text_field :bedrooms, class: "form-control" %>
     </div>
-    <div class="field">
+    <div class="form-group">
         <%= form.label :bathrooms %>
         <%= form.text_field :bathrooms, class: "form-control" %>
     </div>
-    <div class="actions">
+    <div class="form-group">
     <%= form.submit "Save", class: 'btn btn-success btn-lg btn-block' %>
     </div>      
 <% end %>
