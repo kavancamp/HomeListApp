@@ -3,4 +3,5 @@ class Account < ApplicationRecord
         :recoverable, :rememberable, :validatable, :trackable, :confirmable
     
   has_many :properties
+
 end

@@ -17,9 +17,9 @@
         <td><%= property.price %></td>
         <td><%= property.bedrooms %></td>
         <td><%= property.bathrooms %></td>
-        <td><%= %></td>
-        <td><%= %></td>
-        <td><%= %></td>
+        <td><%= link_to 'Show', property %></td>
+        <td><%= link_to 'Edit', edit_property_path(property) %></td>
+        <td><%= link_to 'Destroy', property, method: :delete, data: {confirm: 'Please confirm'} %></td>
         </tr>
     <% end %>
     </tbody>

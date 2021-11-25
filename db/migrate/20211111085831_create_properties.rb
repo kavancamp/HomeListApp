@@ -4,7 +4,7 @@ class CreateProperties < ActiveRecord::Migration[6.1]
       t.string  :title
       t.string  :address
       t.integer :price
-      t.integer :bedroomsrooms
+      t.integer :bedrooms
       t.integer :bathrooms
       t.string  :photo
       t.references :account
