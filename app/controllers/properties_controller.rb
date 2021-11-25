@@ -1,6 +1,6 @@
 class PropertiesController < ApplicationController
-    before_action :set_property, only: [:show, :edit, :update, :destroy]
-    before_action :authenticate_account!, only: [:new, :create, :destroy]
+    #before_action :set_property, only: [:show, :edit, :update, :destroy]
+    #before_action :authenticate_account!, only: [:new, :create, :destroy]
 
     #commenting out to fix at a later time 
     #protect_from_forgery unless: -> { @authenticated_by.oauth? }
@@ -19,6 +19,7 @@ class PropertiesController < ApplicationController
 
     def index
         @properties = Property.all
+        @properties_by_account = Property.where(account_id: current_account)
     end
 
     def show
@@ -68,13 +69,14 @@ class PropertiesController < ApplicationController
     end
 
     private
-    def set_property
+     def set_property
       @property = Property.find(params[:id])
     end
 
     def property_params
-     params.require(:property).permit(:title, :address, :price, :bedrooms, :bathrooms, :photo, :details, :price, :for_sale, :avaliable_date, :status )
-    end
+        params.require(:property).permit(:name, :address, :price, :bedrooms, :bathrooms)
+      end
+  
 
    
 end

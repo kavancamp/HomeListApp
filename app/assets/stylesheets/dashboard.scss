@@ -1,4 +1,4 @@
-#dashboard #properties {
+#dashboard, #properties{
 
   .feather {
     width: 16px;
@@ -24,12 +24,6 @@
     box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
   }
 
-  @media (max-width: 767.98px) {
-    .sidebar {
-      top: 5rem;
-    }
-  }
-
   .sidebar-sticky {
     position: relative;
     top: 0;
@@ -43,7 +37,8 @@
     font-weight: 500;
     color: #333;
   }
-
+  
+  
   .sidebar .nav-link .feather {
     margin-right: 4px;
     color: #030303;
@@ -70,6 +65,11 @@
     }
   }
   
+  @media (min-width: 768pc){
+    [role="main"]{
+      padding-top: 48px;
+    }
+  }
   @media (min-width: 768pc){
     [role="main"]{
       padding-top: 48px;
@@ -110,4 +110,5 @@
     border-color: transparent;
     box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
   }
+  
 }

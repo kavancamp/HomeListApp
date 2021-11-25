@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 2021_11_11_085831) do
     t.string "name"
     t.string "address"
     t.integer "price"
-    t.integer "rooms"
+    t.integer "bedrooms"
     t.integer "bathrooms"
     t.string "photo"
     t.integer "account_id"
