@@ -1,6 +1,6 @@
 class PropertiesController < ApplicationController
-    #before_action :set_property, only: [:show, :edit, :update, :destroy]
-    #before_action :authenticate_account!, only: [:new, :create, :destroy]
+    before_action :set_property, only: [:show, :edit, :update, :destroy]
+    before_action :authenticate_account!, only: [:new, :create, :destroy]
 
     #commenting out to fix at a later time 
     #protect_from_forgery unless: -> { @authenticated_by.oauth? }
@@ -25,7 +25,7 @@ class PropertiesController < ApplicationController
     def show
         @agent=@property.account
         @agent_properties = Property.where(account_id: @agent.id).where.not(id: @property.id)
-      end
+    end
 
     def new
         @property = Property.new
