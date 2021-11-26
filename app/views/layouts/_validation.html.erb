@@ -3,9 +3,9 @@
     <h2 class="pt-4"><%= pluralize(item.errors.count, "error") %> prohibited this property from being saved:</h2>
 
     <ul>
-      <% item.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+     <% item.errors.full_messages.each do |message| %>
+       <li><%= message %></li>
+     <% end %>
     </ul>
   </div>
 <% end %>

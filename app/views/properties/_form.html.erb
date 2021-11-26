@@ -21,6 +21,11 @@
         <%= form.label :bathrooms %>
         <%= form.text_field :bathrooms, class: "form-control" %>
     </div>
+    <div class="form,-group">
+        <%= f.label :photo %>
+        <%= f.file_field :photo, class: "form-control" %>
+        <%= f.hidden_field :photo_cache %>
+    </div>
     <div class="form-group">
     <%= form.submit "Save", class: 'btn btn-success btn-lg btn-block' %>
     </div>      
