@@ -1,6 +1,7 @@
 class PropertiesController < ApplicationController
-    before_action :set_property, only: [:show, :edit, :update, :destroy]
     before_action :authenticate_account!, only: [:new, :create, :destroy]
+    before_action :set_property, only: [:show, :edit, :update, :destroy]
+    before_action :set_sidebar, except: [:show]
 
     #commenting out to fix at a later time 
     #protect_from_forgery unless: -> { @authenticated_by.oauth? }
@@ -69,14 +70,15 @@ class PropertiesController < ApplicationController
     end
 
     private
-     def set_property
-      @property = Property.find(params[:id])
-    end
+      def set_property
+        @property = Property.find(params[:id])
+      end
+      
+      def set_sidebar
+        @show_sidebar = true
+      end
 
-    def property_params
+      def property_params
         params.require(:property).permit(:name, :address, :price, :photo, :bedrooms, :bathrooms, :photo_cache)
       end
-  
-
-   
 end
