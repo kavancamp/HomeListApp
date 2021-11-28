@@ -27,10 +27,6 @@ gem 'jbuilder', '~> 2.7'
 gem 'devise'
 gem 'carrierwave'
 gem 'fog'
-#gem "oauth-plugin", ">= 0.5.1"
-#group :test do
-    #gem 'rspec-rails'
-#end
 gem 'mini_magick'
 gem 'dynamic_form'
 # Reduces boot times through caching; required in config/boot.rb

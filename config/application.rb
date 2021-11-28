@@ -17,6 +17,8 @@ require "sprockets/railtie"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
+require 'fog/core'
+Fog::Logger[:deprecation] = nil
 Bundler.require(*Rails.groups)
 
 module HomeListApp
@@ -34,5 +36,7 @@ module HomeListApp
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    config.assets.paths << Rails.root.join("property_thumbnail", "placeholder.png")
   end
 end
