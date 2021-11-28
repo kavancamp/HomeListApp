@@ -25,8 +25,9 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 gem 'devise'
-gem 'carrierwave'
-gem 'fog'
+gem 'carrierwave', '~> 2.0'
+gem 'fog', '~> 1.37.0'
+#re-size images
 gem 'mini_magick'
 gem 'dynamic_form'
 # Reduces boot times through caching; required in config/boot.rb
