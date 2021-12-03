@@ -16,9 +16,10 @@
     <% if @show_sidebar.nil? %>
       <header>
         <%= render "layouts/navigation/public" %>
-        <%= yield %>
       </header>
-    <% else %>
+      <%= yield %>
+      <% else %>
+
      <%= render "layouts/navigation/dashboard" %>
 
      <div class="container-fluid">

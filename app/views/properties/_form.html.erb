@@ -1,4 +1,4 @@
-<%= form_with(model: property, local: true) do |form| %>
+<%= form_with(model: property, multipart:true, local: true) do |form| %>
     <%= render "layouts/validation", item: @property %>
 
     <div class="form-group">

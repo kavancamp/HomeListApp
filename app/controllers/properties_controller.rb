@@ -73,12 +73,12 @@ class PropertiesController < ApplicationController
       def set_property
         @property = Property.find(params[:id])
       end
-      
+
       def set_sidebar
         @show_sidebar = true
       end
 
       def property_params
-        params.require(:property).permit(:name, :address, :price, :photo, :bedrooms, :bathrooms, :photo_cache)
+        params.require(:property).permit(:name, :address, :price, :photo, :bedrooms, :bathrooms, :photo_cache, :photo_url)
       end
 end
