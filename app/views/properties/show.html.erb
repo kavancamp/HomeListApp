@@ -1,21 +1,31 @@
-<div class="property-photo-main" style="background-image:url('<%= property_photo_url @property %>')"> </div>
-<div class="container mt-5"> 
+<div class="property-photo-main" style="background-image:url('<%= property_photo_url @property %>')"> 
+    div class="photo-overlay">
+    </div>
+</div>
+<div class="container"> 
+    <div class="row">
+    <div class="row">
+        <div class="col-8">
+            <div class="col-6">
+          <p class="mb-0"><%= @property.address %></p>
+          <p class="h2">For Sale</p>
+        </div>
+        <div class="col-6">
+            <div class="">
+             <%= @property.bedrooms %>
+        </div>
+        <div class="">
+        <%= @property.bathrooms %>
+    </div>
     <div class="row">
         <div class="col">
-        
-        <strong>Name</strong>
-        <%= @property.name %>
-        <strong>Address</strong>
-        <%= @property.address %>
+            <strong>Name</strong>
+            <%= @property.name %>
+            <strong>Address</strong>
+            <%= @property.address %>
 
-        <strong>Price</strong>
-        <%= @property.price %>
-    
-        <strong>Bedrooms</strong>
-        <%= @property.bedrooms %>
-    
-        <strong>Bathrooms</strong>
-        <%= @property.bathrooms%>
+            <strong>Price</strong>
+            <%= @property.price %>
     
         </div>
     </div>
