@@ -1,6 +1,6 @@
 class PhotoUploader < CarrierWave::Uploader::Base
-  include CarrierWave::MiniMagick
-  include Sprockets::Rails::Helper
+  #include CarrierWave::MiniMagick
+  #include Sprockets::Rails::Helper
   
   storage :fog
 
