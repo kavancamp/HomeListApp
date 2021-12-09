@@ -1,32 +1,47 @@
-<div class="property-photo-main" style="background-image:url('<%= property_photo_url @property %>')"> 
+<div class="property-photo-main mt-6 pt-3" style="background-image:url('<%= property_photo_url @property %>')"> 
     div class="photo-overlay">
     </div>
 </div>
 <div class="container"> 
     <div class="row">
-    <div class="row">
         <div class="col-8">
-            <div class="col-6">
-          <p class="mb-0"><%= @property.address %></p>
-          <p class="h2">For Sale</p>
+             <div class="row">
+                <div class="col-6">
+                    <p class="mt-3 mb-4"><%= @property.address %></p>
+                    <p class="h2 "><%= @property.price > 0 ? number_to_currency(@property.price, precision:0) : "For Sale" %></p>
+                </div>
+                <div class="col-6 text-center">
+                    <div class="row mr-3 bg-light p-3 ">
+                      <div class="col-4">
+                        <p class="m-0"><strong>Bedrooms</strong></p>
+                        <span class="lead"><%= @property.bedrooms %></span>
+                      </div>
+                    <div class="col-4">
+                        <p class="m-0"><strong>Bathrooms</strong></p>
+                        <span class="lead"><%= @property.bathrooms %></span>
+                    </div>
+                    <div class="col-4">
+                        <p class="m-0"><strong>Price</strong></p>
+                        <span class="lead"><%= @property.price %></span>
+                    </div>
+                </div>
+            </div>
         </div>
+    <div class="row border-bottom border-top pt-3 mt-3 mb-4 pb-4">
         <div class="col-6">
-            <div class="">
-             <%= @property.bedrooms %>
+          <strong class="text-success">Estimated Payments of <%= number_to_currency((@property.price / 360))%> </strong>
         </div>
-        <div class="">
-        <%= @property.bathrooms %>
+        <div class="col-6 text-right">
+          <strong><%= link_to "Find out if you can afford this home", "#"%> </strong>
+        </div>
     </div>
     <div class="row">
-        <div class="col">
-            <strong>Name</strong>
-            <%= @property.name %>
-            <strong>Address</strong>
-            <%= @property.address %>
-
-            <strong>Price</strong>
-            <%= @property.price %>
-    
+      <p class="h3"> Details:<p>
+        <div class="col-6">
+            
         </div>
-    </div>
+      </div>
 </div>
+ 
+
+ 
