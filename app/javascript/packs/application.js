@@ -3,7 +3,8 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 require("@rails/ujs").start()
-require("includes/properties");
+require("jquery");
+require("./includes/properties");
 
 import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
