@@ -5,6 +5,7 @@
 require("@rails/ujs").start()
 require("bootstrap");
 require("./includes/properties");
+
 var jQuery = require("jquery")
 global.$ = global.jQuery = jQuery
 window.$ = window.jQuery = jQuery
