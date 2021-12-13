@@ -1,22 +1,25 @@
-<div class="property-photo-main" style="background-image:url('<%= property_photo_url @property %>')"> 
-    <div class="photo-overlay">
-    </div>
-</div>
+<header class="pb-4 mb-4 border-bottom">
+  <div class="property-photo-main pb-4 mb-4 mt-4" style="background-image:url('<%= property_photo_url @property %>')"> 
+      <div class="photo-overlay">
+      </div>
+  </div>
+</header>
+
 <div class="container"> 
   <div class="row">
     <div class="col-8">
       <div class="row">
         <div class="col-6">
-          <p class="mb-1"><=% @property.address %></p>
-            <p class="h1"><%= @property.price > 0 ? number_to_currency(@property.price, precision: 0) : "For Sale" %> </p>
+          <p class="mb-1"> <%=@property.address %></p>
+          <p class="h1"> <%= @property.price > 0 ? number_to_currency(@property.price, precision: 0) : "For Sale" %> </p>
         </div>
         <div class="col-6 text-center">
           <div class="row p-3 mr-3 bg-light">
-            <div class="col-4">
+            <div class="col-6">
               <p class="m-0"><strong>Bedrooms</strong></p>
                 <span class="lead"><%= @property.bedrooms %></span>
               </div>
-            <div class="col-4>">
+            <div class="col-6>">
               <p class="m-0"><strong>Bathrooms</strong></p>
               <span class="lead"><%= @property.bathrooms %></span>
             </div>    
@@ -28,19 +31,18 @@
         <strong class="text-success">Estimated Payments of <%= number_to_currency((@property.price / 360))%> </strong>
       </div>
       <div class="col-6 text-right">
-          <strong><%= link_to "Find out if you can afford this home", "#"%> </strong>
+          <strong><%= link_to "Find out if you can afford this home", "#" %> </strong>
       </div>
     </div>
     <div class="row">
       <div class="col"> 
         <p class="h4"> Description:</p>
           <div id="property-description" class="#">
-            <%= simple_format @property.description %> 
+            <%= @property.description %>
           </div>
-      </div>
+        </div>
     </div>
     <div class="col-4">
-      
     </div>
   </div>
 </div>
