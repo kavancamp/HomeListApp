@@ -27,7 +27,7 @@
       </div>             
     <div class="row border-bottom border-top pt-3 mt-3 mb-4 pb-4">
       <div class="col-6">
-        <strong class="text-success">Estimated Payments of <%= number_to_currency((@property.price / 360))%> </strong>
+        <strong><%= link_to "Estimated Payments of #{ number_to_currency((@property.price - (@property.price * 0.1)) / 360,  precision: 0) } *", "#", class: "text-success" %> </strong>
       </div>
       <div class="col-6 text-right">
           <strong><%= link_to "Find out if you can afford this home", "#" %> </strong>
@@ -43,6 +43,7 @@
       </div>
     </div>
     <div class="col-4">
+    <p class="h4>" **Based on 30 year mortgage with 10% down. </p>
     </div>
   </div>
 </div>
