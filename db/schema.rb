@@ -32,7 +32,8 @@ ActiveRecord::Schema.define(version: 2021_12_13_214020) do
     t.string "unconfirmed_email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "image"
+    t.string "photo"
+    t.string "company"
     t.index ["email"], name: "index_accounts_on_email", unique: true
     t.index ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true
   end
