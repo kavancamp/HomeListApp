@@ -1,9 +1,14 @@
 .property-photo-main {
+    height: 500px;
     background-size: cover;
-    height: 550px;
+    background-position-y: center;
 }
 
-#property-description {
-    height: 60px;
+#description-wrapper {
+    height: 150px;
     overflow: hidden;
+
+    &.open {
+        height: auto;
+    }
 }
