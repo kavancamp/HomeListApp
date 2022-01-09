@@ -55,4 +55,6 @@ const getUploadURL = async function(event) {
     uploadURL: uploadURL,
     Key
   })
-}
+
+  
+  require("./includes/properties")

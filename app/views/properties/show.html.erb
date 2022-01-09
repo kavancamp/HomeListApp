@@ -11,14 +11,14 @@
           <p class="mb-1"> <%=@property.address %></p>
           <p class="h1"> <%= @property.price > 0 ? number_to_currency(@property.price, precision: 0) : "For Sale" %> </p>
         </div>
-        <div class="col-lg-6 text-center">
+        <div class="col-6 text-center">
         <div class="row mr-lg-3 mt-sm-3 bg-light p-2 rounded">
-            <div class="col-4">
+            <div class="col-6">
               <p class ="m-0 fw-bold">Bedrooms</p>
               <i class="fas fa-bed"></i>
               <span class="lead"><%= @property.bedrooms %></span>
             </div>
-            <div class="col-4">
+            <div class="col-6">
               <p class ="m-0 fw-bold">Bathrooms</p>
               <i class="fas fa-shower"></i>
               <span class="lead"><%= @property.bathrooms %></span>
