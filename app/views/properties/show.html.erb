@@ -15,13 +15,13 @@
         <div class="row mr-lg-3 mt-sm-3 bg-light p-2 rounded">
             <div class="col-6">
               <p class ="m-0 fw-bold">Bedrooms</p>
-              <i class="fas fa-bed"></i>
-              <span class="lead"><%= @property.bedrooms %></span>
+              <span class="lead"><%= @property.bedrooms %></i></span>
+              <i class="fa-thin fa-bed-front"></i>
             </div>
             <div class="col-6">
               <p class ="m-0 fw-bold">Bathrooms</p>
-              <i class="fas fa-shower"></i>
               <span class="lead"><%= @property.bathrooms %></span>
+              <i class="fa-thin fa-shower"></i>
             </div>  
           </div>   
         </div>
@@ -47,7 +47,16 @@
       </div>
     </div>
     <div class="col-sm-4">
-      <!-- <%= render "properties/agent" %> -->
+      <%= render "properties/agent_info", agent: @agent %>
+        <iframe
+          class="ml-lg-4 mt-3"
+          width="320"
+          height="240"
+          style="border:0"
+          loading="lazy"
+          src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCfIqZFuB7d1yDzBmghQ5MeDis-uPvF8HY&q=<%= @property.address.to_param %>">
+        </iframe>
     </div>
   </div>
 </div>
+
