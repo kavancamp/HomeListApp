@@ -4,8 +4,6 @@ class Account < ApplicationRecord
     
   has_many :properties
 
-  mount_uploader :photo, PhotoUploader
-
   def company 
     "test"
   end

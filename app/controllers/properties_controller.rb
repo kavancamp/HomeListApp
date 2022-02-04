@@ -29,7 +29,11 @@ class PropertiesController < ApplicationController
     end
 
     def new
-        @property = Property.new
+      if current_user.company_id == nil
+        redirect_to user_edit_path(current_user.id), :flash => { :error => "Cannot List a new Property without a Company" }
+        return
+      end
+      @property = Property.new
     end
 
     def edit
@@ -59,6 +63,14 @@ class PropertiesController < ApplicationController
             format.json { render json: @property.errors, status: :unprocessable_entity }
           end
         end
+      end
+
+      def search 
+        @sp = params.fetch(:search_params, {})
+        @properties = Property.all
+        @properties = @properties.where(:size => SIZE_MAPPING[@sp['size'].to_i][0]...SIZE_MAPPING[@sp['size'].to_i][1]) if @sp['size'].present?
+        @properties = @properties.where(['address LIKE ?', "%#{@sp['address']}%"]) if @sp['address'].present? && @sp['address'] != ""
+        @properties = @properties.where(:price => PRICE_MAPPING[@sp['price'].to_i][0]...PRICE_MAPPING[@sp['price'].to_i][1]) if @sp['price'].present?
       end
 
     def destroy
