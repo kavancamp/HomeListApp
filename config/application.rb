@@ -17,10 +17,7 @@ require "sprockets/railtie"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
-require 'fog/core'
-Fog::Logger[:deprecation] = nil
-Bundler.require(*Rails.groups)
-
+require "devise"
 module HomeListApp
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.

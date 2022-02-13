@@ -2,20 +2,6 @@ class PropertiesController < ApplicationController
     before_action :authenticate_account!, only: [:new, :create, :destroy]
     before_action :set_property, only: [:show, :edit, :update, :destroy]
     before_action :set_sidebar, except: [:show]
-
-    #commenting out to fix at a later time 
-    #protect_from_forgery unless: -> { @authenticated_by.oauth? }
-
-       # private
-        #def authenticate
-           # if oauth_request?
-            # authenticate with oauth
-            #@authenticated_by = 'oauth'.inquiry
-          #  else
-            # authenticate with cookies
-           # @authenticated_by = 'cookie'.inquiry
-           # end
-        #end
    
 
     def index
