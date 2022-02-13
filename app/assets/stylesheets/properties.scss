@@ -3,25 +3,3 @@
     background-size: cover;
     background-position-y: center;
 }
-
-#description-wrapper {
-    height: 150px;
-    overflow: hidden;
-
-    &.open {
-        height: auto;
-    }
-}
-
-.property-thumb {
-    height: 160px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center center;
-
-    a {
-        display: block;
-        width: 100%;
-        height: 100%;
-    }
-}
