@@ -2,12 +2,14 @@
    <div class="col-4">  
       <div class="border">
       
-        <div class="property-thumb" style="background-image: url(<%= property_thumbnail_url(property) %>)">
-         <%= link_to "", property_path(property) %>
-         </div>
+         <%= link_to property_path(property) do %>
+            <%= property_thumbnail(property) %>
+         <% end %>
 
          <div class="property-description p-3">
-         <h4 class="h6"><%= link_to property.name, property_path(property), class: "text-dark" %></h4>
+         <h4 class="h6">
+            <%= link_to property.name, property_path(property), class: "text-dark" %>
+         </h4>
             
             <p><%= property.address %></p>
             <span class="p-3 mr-2">
