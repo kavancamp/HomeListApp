@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'admin/accounts'
   resources :properties
   root "public#main"
   devise_for :accounts
