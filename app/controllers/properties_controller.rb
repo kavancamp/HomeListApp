@@ -1,7 +1,7 @@
 class PropertiesController < ApplicationController
-    before_action :authenticate_account!, only: [:new, :create, :destroy]
-    before_action :set_property, only: [:show, :edit, :update, :destroy]
-    before_action :set_sidebar, except: [:show]
+  before_action :set_property, only: %i[ show edit update destroy ]
+  before_action :authenticate_account!, except: [:show, :email_agent, :view_all]
+  before_action :set_sidebar, except: [:show]
    
 
     def index
