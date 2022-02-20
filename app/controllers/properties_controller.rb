@@ -15,7 +15,7 @@ class PropertiesController < ApplicationController
     end
 
     def new
-      if current_user.company_id == nil
+      if current_account.company_id == nil
         redirect_to user_edit_path(current_user.id), :flash => { :error => "Cannot List a new Property without a Company" }
         return
       end
