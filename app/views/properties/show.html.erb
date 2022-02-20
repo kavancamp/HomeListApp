@@ -1,29 +1,31 @@
-<div class="property-photo-main" style="background-image:url('<% property_photo_url @property %>')"> 
-  <div class="photo-overlay">
+<div class="property-main-image" style="background-image: url('<%= property_photo_url(@property) %>')">
+  <div class="property-image-overlay"></div>
+</div>
 
 <div class="container mt-5">
   <div class="row">
     <div class="col-md-8">
       <div class="row">
         <div class="col-6">
-          <p class="mb-1"> <%=@property.address %></p>
+          <p class="mb-1"> <%=@property.address %><i class="fa-thin fa-map-pin"></i></p>
           <p class="h1"> <%= @property.price > 0 ? number_to_currency(@property.price, precision: 0) : "For Sale" %> </p>
         </div>
         <div class="col-6 text-center">
-        <div class="row mr-lg-3 mt-sm-3 bg-light p-2 rounded">
+          <div class="row mr-lg-3 mt-sm-3 bg-light p-2 rounded">
             <div class="col-6">
               <p class ="m-0 fw-bold">Bedrooms</p>
+                <i class="fa-thin fa-bed-front"></i>
               <span class="lead"><%= @property.bedrooms %></i></span>
-              <i class="fa-thin fa-bed-front"></i>
             </div>
             <div class="col-6">
               <p class ="m-0 fw-bold">Bathrooms</p>
-              <span class="lead"><%= @property.bathrooms %></span>
-              <i class="fa-thin fa-shower"></i>
+                <i class="fa-thin fa-shower"></i>
+                <span class="lead"><%= @property.bathrooms %></span>
             </div>  
           </div>   
         </div>
-      </div>             
+      </div>   
+
     <div class="row border-bottom border-top pt-3 mt-3 mb-4 pb-4">
       <div class="col-6">
         <strong><%= link_to "Estimated Payments of #{ number_to_currency((@property.price - (@property.price * 0.1)) / 360,  precision: 0) } ", "#", class: "text-success" %> </strong>
@@ -36,25 +38,23 @@
       <div class="col"> 
         <p class="h3"> <%= @property.name %></p>
         <p class="h4"> Description:</p>
-
-        <div id="property-description">
-            <%= @property.description %>
-        </div>
-
+          <div id="property-description">
+              <%= @property.description %>
+          </div>
         </div>
       </div>
-    </div>
+   
     <div class="col-sm-4">
       <%= render "properties/agent_info", agent: @agent %>
-        <iframe
+        <!-- <iframe
           class="ml-lg-4 mt-3"
           width="320"
           height="240"
           style="border:0"
           loading="lazy"
           src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCfIqZFuB7d1yDzBmghQ5MeDis-uPvF8HY&q=<%= @property.address.to_param %>">
-        </iframe>
+        </iframe> !-->
     </div>
   </div>
-</div>
+
 
