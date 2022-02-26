@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-##Bootstrap Carousel Slider 
+<!--Bootstrap Carousel Slider --> 
 <style> 
   .carousel-item{
     height: 30rem;
@@ -13,21 +13,18 @@
       padding-bottom: 50px;
     }
 </style> 
-<div id="myCarousel" class="carousel slide"> </div>
 
-<div class="carousel-inner">
-
-  <div class="carousel-item active">
-    <div class="container">
-
+<div id="myCarousel" class="carousel slide" data-ride="carousel"> 
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1" class="active"></li>
+      </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+      </div>
+      <div class="carousel-item">
+      </div>
     </div>
-  </div>
-  <div class="carousel-item active">
-    <div class="container">
-
-    </div>
-  </div>
-
 </div>
 
 <div class=<% if @property.photo.present? %>
@@ -44,12 +41,6 @@
   </div>
 <% end %>
 </head>
-
-
-
-
-
-
 
 
 <body>
