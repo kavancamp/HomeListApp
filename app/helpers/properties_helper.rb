@@ -6,7 +6,7 @@ module PropertiesHelper
   end
 
   def property_photo_url(property)
-    property.photo.present? ? polymorphic_url(property.photo) : asset_url("/placeholder.png")
+    property.photo.present? ? polymorphic_url(property.photo) : asset_url("property_banner_placeholder.png")
   end
 
 end
