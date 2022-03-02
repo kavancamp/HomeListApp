@@ -7,6 +7,11 @@
 }
 
 #home-banner section{
-    background: image-url("images/home_banner_placeholder.png") no-repeat center center;
-    color: rgb(192, 69, 69);
+          height: 30rem;
+          width: 100%;
+          background: #777;
+          position: relative;
+          background-position: center;
+          background-size: cover;
+          color: #fff;
 }

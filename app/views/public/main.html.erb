@@ -1,22 +1,38 @@
 <main id="home-banner">
-
-<section class="py-5 text-center container">
-  <div class="row py-lg-5">
-    <div class="col-lg-6 col-md-8 mx-auto">
-      <h1 class="fw-bold">Home is just around the corner..</h1>
-      <button class="btn btn-primary btn-lg" type="button">Search Homes</button>
-    </div>
-  </div>
-</section>
-  <section id="newest-properties" class="mb-4">
-    <div class="container py-2">
-      <div class="row">
-      <%= render "properties/newest_properties" %>
+  
+    <style>
+      .home-banner section{
+        height: 30rem;
+        width: 100%;
+        background-color: #fff;
+        position: relative;
+        background-position: center;
+        background-size: cover;
+        
+        }
+    </style>
+  <section class="py-5 text-center container" style="background-color: powderedblue;">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light">Home Is Just Around The Corner</h1>
+        <p class="lead text-muted">Find your forever home today...</p>
+        <p>
+          <%= link_to href="#" class="btn btn-primary my-2">Search Homes</a>
+          <%= link_to "View Latest Properties", properties_view_all_path, class: "btn btn-success" %>
+        </p>
       </div>
     </div>
-  </section>  
-      
+  </section>
+  
+  <div class="album py-5 bg-light">
+    <div class="container">
+        <div class="row">
+          <%= render "properties/newest_properties", properties: @properties.limit(3)%>
+        </div>
+      </div>
+    </div>  
+  
 </main>
-  <footer class="pt-3 mt-4 text-muted border-top">
-     
-  </footer>
+
+ 
+

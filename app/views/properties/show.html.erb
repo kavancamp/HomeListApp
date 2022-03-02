@@ -1,94 +1,97 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-<!--Bootstrap Carousel Slider --> 
-<style> 
-  .carousel-item{
-    height: 30rem;
-    width: 100%;
-    background: #777;
-    position: relative;
-  }
-    .container{
-      padding-bottom: 50px;
-    }
-</style> 
-
-<div id="myCarousel" class="carousel slide" data-ride="carousel"> 
-      <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1" class="active"></li>
-      </ol>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-      </div>
-      <div class="carousel-item">
-      </div>
-    </div>
-</div>
-
-<div class=<% if @property.photo.present? %>
-  <div class="property-main-image" style="background-image">
-    <div class="photo-overlay">
-      <%= image_tag property_photo_url(@property), :class => "property-main-image" %>
-    </div>
-  </div>
-<% else %>
-  <div class="property-main-image" style="background-image">
-    <div class="photo-overlay">
-    <%= image_tag("property_banner_placeholder.png", alt: "Home image is unavailable")%>
-    </div>
-  </div>
-<% end %>
-</head>
-
-
-<body>
-<div class="container mt-4">
-  <div class="row">
-    <div class="col-md-8">
-      <div class="row">
-        <div class="col-6">
-          <p class="mb-1"> <%=@property.address %><i class="fa-thin fa-map-pin"></i></p>
-          <p class="h1"> <%= @property.price > 0 ? number_to_currency(@property.price, precision: 0) : "For Sale" %> </p>
-        </div>
-        <div class="col-6 text-center">
-          <div class="row mr-lg-3 mt-sm-3 bg-light p-2 rounded">
-            <div class="col-6">
-              <p class ="m-0 fw-bold">Bedrooms</p>
-                <i class="fa-thin fa-bed-front"></i>
-              <span class="lead"><%= @property.bedrooms %></i></span>
+    <head>
+      <!--Bootstrap Carousel Slider --> 
+      <style> 
+        .carousel-item{
+          height: 30rem;
+          width: 100%;
+          background: #777;
+          position: relative;
+          background-position: center;
+          background-size: cover;
+        }
+        
+      </style> 
+    
+      <div id="myCarousel" class="carousel slide" data-ride="carousel"> 
+        <% if @property.photo.present? %>
+            <ol class="carousel-indicators">
+              <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+              <li data-target="#myCarousel" data-slide-to="1" class="active"></li>
+            </ol>
+          <div class="carousel-inner">
+            <div class="carousel-item active" style="background-image">
+              <%= image_tag property_photo_url(@property) %>
             </div>
-            <div class="col-6">
-              <p class ="m-0 fw-bold">Bathrooms</p>
-                <i class="fa-thin fa-shower"></i>
-                <span class="lead"><%= @property.bathrooms %></span>
-            </div>  
-          </div>   
-        </div>
-      </div>   
+            <div class="carousel-item">
+            </div>
+          </div> 
+            <% else %>
+              <div class="property-main-image" style="background-image">
+                <div class="photo-overlay">
+                  <%= image_tag("property_banner_placeholder.png", alt: "Home image is unavailable")%>
+                </div>
+              </div>
+            <% end %>
+          <!-- Left and right controls -->
+          <a href="#myCarousel" class="carousel-control-prev" role="button" data-slide="prev">
+            <span class="sr-only">Previous</span>
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span> 
+          </a>
+          <a href="#myCarousel" class="carousel-control-next" role="button" data-slide="next">
+            <span class="sr-only">Previous</span>
+            <span class="carousel-control-next-icon" aria-hidden="true"></span> 
+          </a>
+      </div>
+    </head>
 
-    <div class="row border-bottom border-top pt-3 mt-3 mb-4 pb-4">
-      <div class="col-6">
-        <strong><%= link_to "Estimated Payments of #{ number_to_currency((@property.price - (@property.price * 0.1)) / 360,  precision: 0) } ", "#", class: "text-success" %> </strong>
-      </div>
-      <div class="col-6 text-right">
-        <strong><%= link_to "Find out if you can afford this home", "#" %> </strong>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col"> 
-        <p class="h3"> <%= @property.name %></p>
-        <p class="h4"> Description:</p>
-          <div id="property-description">
-              <%= @property.description %>
+    <body>
+      <div class="container mt-4">
+        <div class="row">
+          <div class="col-md-8">
+            <div class="row">
+              <div class="col-6">
+                <p class="mb-1"> <%=@property.address %><i class="fa-thin fa-map-pin"></i></p>
+                <p class="h1"> <%= @property.price > 0 ? number_to_currency(@property.price, precision: 0) : "For Sale" %> </p>
+              </div>
+              <div class="col-6 text-center">
+                <div class="row mr-lg-3 mt-sm-3 bg-light p-2 rounded">
+                  <div class="col-6">
+                    <p class ="m-0 fw-bold">Bedrooms</p>
+                      <i class="fa-thin fa-bed-front"></i>
+                    <span class="lead"><%= @property.bedrooms %></i></span>
+                  </div>
+                  <div class="col-6">
+                    <p class ="m-0 fw-bold">Bathrooms</p>
+                      <i class="fa-thin fa-shower"></i>
+                      <span class="lead"><%= @property.bathrooms %></span>
+                  </div>  
+                </div>   
+              </div>
+            </div>   
+
+          <div class="row border-bottom border-top pt-3 mt-3 mb-4 pb-4">
+            <div class="col-6">
+              <strong><%= link_to "Estimated Payments of #{ number_to_currency((@property.price - (@property.price * 0.1)) / 360,  precision: 0) } ", "#", class: "text-success" %> </strong>
+            </div>
+            <div class="col-6 text-right">
+              <strong><%= link_to "Find out if you can afford this home", "#" %> </strong>
+            </div>
           </div>
-        </div>
+          <div class="row">
+            <div class="col"> 
+              <p class="h3"> <%= @property.name %></p>
+              <p class="h4"> Description:</p>
+                <div id="property-description">
+                    <%= @property.description %>
+                </div>
+              </div>
+            </div>
+        
+          <div class="col-sm-4">
+          
+          </div>
       </div>
-   
-    <div class="col-sm-4">
-     
-    </div>
-  </div>
-  </body>
+    </body>
 </html>
