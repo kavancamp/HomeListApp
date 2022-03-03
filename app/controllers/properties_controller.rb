@@ -85,4 +85,10 @@ class PropertiesController < ApplicationController
       def property_params
         params.require(:property).permit(:name, :address, :price, :photo, :bedrooms, :bathrooms, :photo_cache, :photo_url, :description)
       end
+      
+      def account_owns_property?
+        if @property.account_id != current_account.id 
+          redirect_to properties_path, alert: "The property does not belong to you." and return
+        end
+      end
 end
