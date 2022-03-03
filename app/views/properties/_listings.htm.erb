@@ -1,24 +1,22 @@
 <% properties.each do |property| %>
-    <div class="col-4">  
-       <div class="border">
-       
-         <div class="property-thumb" style="background-image: url(<%= property_thumbnail_url(property) %>)">
-          <%= link_to property_path(property) %>
-          </div>
- 
-          <div class="property-description p-3">
-          <h4 class="h6"><%= link_to property.name, property_path(property), class: "text-dark" %></h4>
-             
-             <p><%= property.address %></p>
-             <span class="p-3 mr-2">
-                <i class="fa-thin fa-shower"></i>
-                <%= property.bathrooms %>
-             </span>
-             <span class="p-3 mr-2">
-                <i class="fa-thin fa-bed"></i>
-                <%= property.bedrooms %>
-             </span>
-          </div>
+   <div class="col">
+         <div class="card shadow-sm">
+           <%= link_to property_path(property) do %>
+               <%= property_thumbnail(property) %>
+           <% end %>
+           <div class="card-body">
+               <%= link_to property_path(property), class: "text-decoration-none text-dark text-capitalize" do %>
+                   <h5><%= property.name %></h5>
+               <% end %>
+             <p class="card-text"><%= property.address %></p>
+             <div class="d-flex justify-content-between align-items-center">
+               <div class="btn-group">
+                 <i class="fas fa-bed btn-sm btn-outline-secondary"> <%= property.rooms %></i>
+                 <i class="fas fa-bath btn-sm btn-outline-secondary"> <%= property.bathrooms %></i>
+                 <i class="fas fa-car btn-sm btn-outline-secondary"> <%= property.parking_spaces %></i>
+               </div>
+             </div>
+           </div>
+         </div>
        </div>
-    </div>
- <% end %>
+<% end %>

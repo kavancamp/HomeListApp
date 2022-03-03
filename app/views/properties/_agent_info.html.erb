@@ -6,7 +6,16 @@
       <%= image_tag "no-image-found-360x250.jpg", class:"rounded-circle", width: '20%' %>
     <% end %>
   </div>
-  <div class="col-md-12">
-
-
-  </div>
+    <div class="col-md-12">
+        <h3><%= link_to agent.full_name, profile_path(agent.id) %></h3>
+    </div>
+    <div class="col-md-12">
+        <h4 class="pb-1"><%= link_to agent.company, "#" %></h4>
+    </div>
+    <div class="col-md-6 mb-1">
+        <button class="btn btn-info btn-block" id="show-tel" data-telephone="<%= agent.telephone %>"><i class="fa fa-phone"></i> <span>Call</span></button>
+    </div>
+    <div class="col-md-6 mb-1">
+        <button class="btn btn-success btn-block"><i class="fa fa-envelope"> Email</i> </button>
+    </div>
+</div>
