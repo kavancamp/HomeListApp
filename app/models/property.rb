@@ -2,7 +2,7 @@ class Property < ApplicationRecord
   
   #Relationship
   belongs_to :account
-  has_many_attached :photo
+  has_one_attached :photo
  
   scope :latest, -> { order created_at: :desc }
   scope :sold, -> { where for_sale: true, status: "Sold" }

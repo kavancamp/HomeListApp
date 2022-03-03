@@ -1,21 +1,34 @@
-<div class="row text-center">
-  <div class="col-md-12">
-    <% if agent.image.present? %>
-      <%= image_tag agent.image.url, class: "rounded-circle", width: '20%' %>
-    <% else %>
-      <%= image_tag "no-image-found-360x250.jpg", class:"rounded-circle", width: '20%' %>
+<div class="text-center border p-4 pb-4 rounded ml-lg-4 ml-5">
+    <div class="mb-2">
+        <%= image_tag profile_picture(agent), :class => "rounded-circle", width: 100 %>
+    </div>
+    <h3 class="h4"><%= agent.full_name %></h2>
+    <p><%= agent.company_name %></p>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="d-grid gap-2 mb-3 mr-2">
+                <button class="btn btn-long btn-info text-uppercase" style="color: white;" id="show-number" data-number="<%= agent.phone_number %>"><i class="fas fa-phone-square"></i> <span>Call now</span></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+    <% if controller.controller_name != "profile" %>
+        <div class="col-md-6 pr-1">
+            <div class="d-grid gap-2 mb-4 mr-2">
+                <%= link_to "Profile", profile_path(agent.id), class: "btn btn-secondary text-uppercase" %>
+            </div>
+        </div>
     <% end %>
-  </div>
-    <div class="col-md-12">
-        <h3><%= link_to agent.full_name, profile_path(agent.id) %></h3>
-    </div>
-    <div class="col-md-12">
-        <h4 class="pb-1"><%= link_to agent.company, "#" %></h4>
-    </div>
-    <div class="col-md-6 mb-1">
-        <button class="btn btn-info btn-block" id="show-tel" data-telephone="<%= agent.telephone %>"><i class="fa fa-phone"></i> <span>Call</span></button>
-    </div>
-    <div class="col-md-6 mb-1">
-        <button class="btn btn-success btn-block"><i class="fa fa-envelope"> Email</i> </button>
+        <div class="<%= "col-md-6" if controller.controller_name != "profile" %> pl-1">
+            <div class="d-grid gap-2 mb-4 mr-2">
+                <% if !account_signed_in? %>
+                    <button data-bs-toggle="modal" data-bs-target="#email-agent" class="btn btn-success text-uppercase"><i class="fas fa-envelope-square"></i> Email</button>
+                <% else %>
+                    <%= link_to "Message now" , conversations_path(sender_id: current_account.id, recipient_id: agent.id), method: "post", class:"btn btn-success text-uppercase" %>
+                <% end %>
+            </div>
+        </div>
     </div>
 </div>

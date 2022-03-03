@@ -52,11 +52,12 @@ class PropertiesController < ApplicationController
       end
 
       def search 
-        @sp = params.fetch(:search_params, {})
-        @properties = Property.all
-        @properties = @properties.where(:size => SIZE_MAPPING[@sp['size'].to_i][0]...SIZE_MAPPING[@sp['size'].to_i][1]) if @sp['size'].present?
-        @properties = @properties.where(['address LIKE ?', "%#{@sp['address']}%"]) if @sp['address'].present? && @sp['address'] != ""
-        @properties = @properties.where(:price => PRICE_MAPPING[@sp['price'].to_i][0]...PRICE_MAPPING[@sp['price'].to_i][1]) if @sp['price'].present?
+        if params[:search].blank? 
+          redirect_to properties_path and return
+        else 
+          @parameter = params[:search].downcase
+          @results = Property.all.where("lower(name) LIKE :search", search: "%#{@parameter}%")
+
       end
 
       def view_all
@@ -83,7 +84,7 @@ class PropertiesController < ApplicationController
       end
 
       def property_params
-        params.require(:property).permit(:name, :address, :price, :photo, :bedrooms, :bathrooms, :for_sale, :photo_cache, :photo_url, :description)
+        params.require(:property).permit(:name, :address, :price, :photo, :bedrooms, :bathrooms, :for_sale, :phone_number, :photo_cache, :photo_url, :description)
       end
 
       def account_owns_property?
