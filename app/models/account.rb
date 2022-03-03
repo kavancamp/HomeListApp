@@ -4,7 +4,7 @@ class Account < ApplicationRecord
 
   has_one_attached :profile_picture 
   has_many :properties
-  
+  has_many :photo, :through => :properties
 
   def company 
     "test"
