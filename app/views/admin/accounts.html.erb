@@ -1,18 +1,26 @@
 <h1>My Account</h1>
 
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Full name</th>
+      <th>Email</th>
+      <th>Role</th>
+      <th>Registed date</th>
+      <th>Profile</th>
+    </tr>
+  </thead>
+    
+  <tbody>
     <% @accounts.each do |account| %>
-    <div class="row">
-         <div class="col-md-3">
-            <%= account.full_name %>
-        </div>
-        <div class="col-md-3">
-            <%= account.email%>
-        </div>
-        <div class="col-md-3">
-            <%= account.created_at.strftime("%d %m %Y") %>
-        </div>
-        <div class="col-md-3">
-            <%= link_to "View Profile", profile_path(account.id) %>
-        </div>
-    </div>
-        <% end %>
+      <tr>
+        <td><%= account.full_name %></td>
+        <td><%= account.email %></td>
+        <td><%= account.role.capitalize %></td>
+        <td><%= account.created_at.strftime("%d/%m/%y") %></td>
+        <td><%= link_to "View profile", profile_path(account.id) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

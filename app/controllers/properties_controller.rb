@@ -55,9 +55,9 @@ class PropertiesController < ApplicationController
         if params[:search].blank? 
           redirect_to properties_path and return
         else 
-          @parameter = params[:search].downcase
-          @results = Property.all.where("lower(name) LIKE :search", search: "%#{@parameter}%")
-
+            @parameter = params[:search].downcase
+            @results = Property.all.where("lower(name) LIKE :search", search: "%#{@parameter}%")
+        end
       end
 
       def view_all
@@ -84,12 +84,13 @@ class PropertiesController < ApplicationController
       end
 
       def property_params
-        params.require(:property).permit(:name, :address, :price, :photo, :bedrooms, :bathrooms, :for_sale, :phone_number, :photo_cache, :photo_url, :description)
+        params.require(:property).permit(:name, :address, :price, :photo, :bedrooms, :bathrooms, :for_sale, :photo_cache, :photo_url, :description)
       end
 
-      def account_owns_property?
-        if @property.account_id != current_account.id 
-          redirect_to properties_path, alert: "This property doesn't belong to you." and return
-        end
+      
+    def account_owns_property?
+      if @property.account_id != current_account.id 
+        redirect_to properties_path, alert: "The property does not belong to you." and return
       end
+    end
 end

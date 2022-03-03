@@ -13,5 +13,7 @@ class Property < ApplicationRecord
   validates :name, presence: true, length: {minimum: 3, maximum: 50}
   validates :address, presence: true, length: {minimum: 3, maximum: 100}
   
-  
+  def self.search(search)
+    where("lower(properties.name) LIKE :search OR lower(properties.name) LIKE :search ", search: "%#{search.downcase}%").uniq
+  end
 end
