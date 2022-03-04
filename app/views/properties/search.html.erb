@@ -1,6 +1,6 @@
 <h2>Results</h3>
 
     <% @results.each do |Result| %>
-        <% result.title %>
+        <% link_to property.title, properties_path(property.id) %>
     <% end %>
   

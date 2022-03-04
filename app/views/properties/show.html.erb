@@ -89,10 +89,34 @@
                 </div>
               </div>
             </div>
-        
-          <div class="col-sm-4">
-          
+            <div class="col-md-4">
+            <%= render '/properties/_agent_info', agent: @agent %>
+            <iframe
+              class="ml-lg-4 mt-3"
+              width="320"
+              height="240"
+              style="border:0"
+              loading="lazy"
+              src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCfIqZFuB7d1yDzBmghQ5MeDis-uPvF8HY&q=<%= @property.address.to_param %>">
+          </iframe>
           </div>
+        </div>
       </div>
+      
+      <section class="mt-5 mb-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p class="h4 mb-4">Other properties from <%= @agent.company_name %></p>
+            </div>
+            <%= render "properties/listings", properties: @agent_properties %>
+          </div>
+        </div>
+      </section>
+      
+      
+      <%= render "properties/etc/email_agent", agent: @agent %>
+
+
     </body>
 </html>
