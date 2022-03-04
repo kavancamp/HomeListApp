@@ -90,7 +90,7 @@
               </div>
             </div>
             <div class="col-md-4">
-            <%= render '/properties/_agent_info', agent: @agent %>
+            <%= render 'properties/agent_info', agent: @agent %>
             <iframe
               class="ml-lg-4 mt-3"
               width="320"
@@ -107,7 +107,7 @@
         <div class="container">
           <div class="row">
             <div class="col-12">
-              <p class="h4 mb-4">Other properties from <%= @agent.company_name %></p>
+              <p class="h4 mb-4">More properties from <%= @agent.company_name %></p>
             </div>
             <%= render "properties/listings", properties: @agent_properties %>
           </div>
@@ -115,7 +115,7 @@
       </section>
       
       
-      <%= render "properties/etc/email_agent", agent: @agent %>
+      <!-- <%= render "properties/email_agent", agent: @agent %> -->
 
 
     </body>
