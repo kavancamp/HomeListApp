@@ -89,20 +89,11 @@
                 </div>
               </div>
             </div>
-        <div class="col-md-4">
-          <%= render 'properties/agent_info', agent: @agent %>
-            </div>
-          <div class="col-md-12">
-          <iframe class=" m-4" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBwOWZ_C1sw6lYJhxYk_LJJCI2uM9GW8IA&q=<%= @property.address %>%" width="300" height="300" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-        </div>
-          </div>
-        </div>
-      </div>
       
     <div class='col-md-4 p-3'>
       <div class="row">
         <div class="col-md-12 p-2">
-          <%= render "properties/agent_details", agent: @agent %>
+          <%= render "properties/agent_info", agent: @agent %>
         </div>
         <div class="col-md-12">
           <iframe class=" m-4" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBwOWZ_C1sw6lYJhxYk_LJJCI2uM9GW8IA&q=<%= @property.address %>%" width="300" height="300" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
@@ -110,10 +101,13 @@
       </div>
     </div>
   </div>
-      
-      
-      <!-- <%= render "properties/email_agent", agent: @agent %> -->
-
+  <section id="latest-properties">
+    <h2 class="p-2">Other properties from this agent<h2>
+      <div class="row">
+        <!-- <%= render "properties/email_agent", agent: @agent %> -->
+      </div>
+    </section>
+    </div>
 
     </body>
 </html>
