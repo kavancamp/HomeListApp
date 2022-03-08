@@ -3,20 +3,22 @@
     <ul class="nav flex-column">
       <li class="nav-item">
         <%= link_to edit_account_registration_path, class: "nav-link" do %>
-            Settings
-        <% end %>
+            Edit My Profile
+          <% end %>     
       </li>
       <li class="nav-item">
         <%= link_to dashboard_path, class: "nav-link" do %>
             Dashboard
-        <% end %>
+          <% end %>   
       </li>
       <li class="nav-item">
         <%= link_to properties_path, class: "nav-link" do %>
             Properties
-        <% end %>
+            <% end %> 
       </li>
-      
+      <li class="nav-item">
+          <%= link_to "My Profile", profile_path(current_account), class: "nav-link" %>
+      </li>
     </ul>
   </div>
 </nav>
