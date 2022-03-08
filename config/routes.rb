@@ -10,6 +10,12 @@ Rails.application.routes.draw do
   get '/search', to: "properties#search"
   get "/profile/:id" => 'dashboard#profile', as: :profile
   
+  post 'agent/email', to: "properties#email_agent"
+  resources :conversations do
+    resources :messages
+  end
+  get 'conversations', to: 'conversations#index'
+  
   devise_scope :account do
     get "/accounts/sign_out" => "devise/sessions#destroy"
   end
