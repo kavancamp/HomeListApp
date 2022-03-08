@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get "/accounts" => 'admin#accounts', as: :accounts
   get "/dashboard" => 'dashboard#index', as: :dashboard
   get '/search', to: "properties#search"
+  get "/profile/:id" => 'dashboard#profile', as: :profile
   
   devise_scope :account do
     get "/accounts/sign_out" => "devise/sessions#destroy"

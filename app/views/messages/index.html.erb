@@ -1,0 +1,44 @@
+<% if @over_2 %>
+ <%= link_to 'Show All', '?m=all', class: 'btn btn-link pull-right' %>
+<% end %>
+
+<div class="row m-auto">
+    <div class="col-lg-10 m-auto mb-4">
+        <div class="message-listing">
+        <% @messages.each do |message| %>
+            <% if message.body %>
+                <% account = Account.find(message.account_id) %>
+            <% if current_account.id == message.account_id %>
+            <div class="media support">
+                <div class="avatar">
+                    <%= image_tag profile_picture(account), class: "avatar rounded-circle"  %>
+                </div>
+                <div class="media-content mb-4">
+                    <div class="comment bg-primary">
+                        <%= message.body %>
+                    </div>
+                    <small><%= account.full_name %> | <%= message.message_time %></small>
+                </div>
+            </div>
+            <% else %>
+            <div class="media">
+                <div class="avatar">
+                    <%= image_tag profile_picture(account), class: "avatar rounded-circle"  %>
+                </div>
+                <div class ="media-content mb-4">
+                    <div class="comment bg-danger">
+                        <p><%= message.body %></p>
+                    </div>
+                        <small><%= account.full_name %> | <%= message.message_time %></small>
+                    </div>
+                </div>
+             <% end %>
+            <% end %>
+        <% end %>
+        <%= form_for [@conversation, @message] do |f| %>
+            <%= f.text_area :body, class: "form-control" %>
+                <%= f.submit "Send", class: "form-control btn btn-success mt-3" %>
+        <% end %>
+        </div>
+    </div>
+</div>
