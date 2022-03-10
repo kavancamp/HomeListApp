@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-  <html lang="en">
-    <head>
+
       <!--Bootstrap Carousel Slider --> 
       <style> 
         .carousel-item{
@@ -44,10 +42,8 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span> 
           </a>
       </div>
-    </head>
-
-    <body>
-      <div class="container mt-4">
+   
+      <div class="container mt-5">
         <div class="row">
           <div class="col-md-8">
             <div class="row">
@@ -76,7 +72,7 @@
             <div class="col-6">
               <strong><%= link_to "Estimated Payments of #{ number_to_currency((@property.price - (@property.price * 0.1)) / 360,  precision: 0) } ", "#", class: "text-success" %> </strong>
             </div>
-            <div class="col-6 text-right">
+            <div class="col-6">
               <strong><%= link_to "Find out if you can afford this home", "#" %> </strong>
             </div>
           </div>
@@ -85,26 +81,27 @@
               <p class="h3"> <%= @property.name %></p>
               <p class="h4"> Description:</p>
                 <div id="property-description">
-                    <%= @property.description %>
+                    <%= simple_format @property.description %>
                 </div>
               </div>
             </div>
       
-    <div class='col-md-4 p-3'>
-      <div class="row">
-        <div class="col-md-12 p-2">
-          <%= render "properties/agent_info" %>
+          <div class="col-md-4 p-3">
+            <%= render "properties/agent_info", agent: @agent %>
+          </div>
         </div>
       </div>
-    </div>
-  
-  <section id="latest-properties">
-    <h2 class="p-2">Other properties from this agent<h2>
-      <div class="row">
-        <!-- <%= render "properties/email_agent", agent: @agent %> -->
+       
+    <section class="mt-5 mb-5">
+      <div class="container">
+        <div class="row">
+         <div class="col-12">
+            <p class="p-2 h4">Other properties from <%= @agent.full_name %>
+            </p>
+         </div>
+         <%= render "properties/listings", properties: @agent.properties %>
+        </div>
       </div>
     </section>
-    </div>
+        <%= render "properties/email_agent", agent: @agent %> 
 
-    </body>
-</html>
