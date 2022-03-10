@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get "/accounts" => 'admin#accounts', as: :accounts
   get "/dashboard" => 'dashboard#index', as: :dashboard
   get '/search', to: "properties#search"
-  get "/profile/:id" => 'dashboard#profile', as: :profile
+  get 'profile/:id', to: 'profile#index', as: :profile
   
   post 'agent/email', to: "properties#email_agent"
   resources :conversations do
