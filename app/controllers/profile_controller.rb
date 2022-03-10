@@ -1,6 +1,6 @@
 class ProfileController < ApplicationController
     before_action :is_invalid_profile?
-    before_action :set_sidebar
+   
   
     def index   
         @account = Account.find(params[:id])
