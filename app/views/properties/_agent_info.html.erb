@@ -1,19 +1,17 @@
 <div class="text-center border p-4 pb-4 rounded ml-lg-4 ml-5">
     <div class="mb-2">
-        <% if @account.profile_picture.present? %>
-            <%= image_tag profile_picture(agent), class: "rounded-circle", width: 100 %>
-        <% else %>
-            <%= image_tag "profile_picture_placeholder.jpeg", class: "rounded-circle", width: '100%' %>
-        <% end %>
+            <%= image_tag profile_picture(@agent), class: "rounded-circle", width: '20%' %>
     </div>
    
-    <h3 class="h4"><%= agent.full_name %></h2>
-    <p><%= agent.company_name %></p>
+    <h3 class="h4"><%= @agent.full_name %></h2>
+    <p><%= @agent.company_name %></p>
 
     <div class="row">
         <div class="col-12">
             <div class="d-grid gap-2 mb-3 mr-2">
-                <button class="btn btn-long btn-info text-uppercase" style="color: white;" id="show-number" data-number="<%= agent.phone_number %>"><i class="fas fa-phone-square"></i> <span>Call now</span></button>
+                <button class="btn btn-long btn-info text-uppercase" style="color: white;" id="show-number" data-number="<%= @agent.phone_number %>"><i class="fas fa-phone-square"></i> 
+                    <span>Call now</span>
+                </button>
             </div>
         </div>
     </div>
@@ -22,7 +20,7 @@
     <% if controller.controller_name != "profile" %>
         <div class="col-md-6 pr-1">
             <div class="d-grid gap-2 mb-4 mr-2">
-                <%= link_to "Profile", profile_path(agent.id), class: "btn btn-secondary text-uppercase" %>
+                <%= link_to "Profile", profile_path(@agent.id), class: "btn btn-secondary text-uppercase" %>
             </div>
         </div>
     <% end %>
