@@ -9,10 +9,7 @@ class MessagesController < ApplicationController
         @messages = @conversation.messages
         @message = @conversation.messages.new
       end
-      def new
-        @message = @conversation.messages.new
-      end
-    
+      
       def create
         @message = @conversation.messages.new(message_params)
         @message.account_id = current_account.id
@@ -20,6 +17,11 @@ class MessagesController < ApplicationController
           redirect_to conversation_messages_path(@conversation)
         end
       end
+
+      def new
+        @message = @conversation.messages.new
+      end
+    
   
       private
       def message_params
