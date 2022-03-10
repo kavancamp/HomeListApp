@@ -1,17 +1,12 @@
-<div class="container" >
-<div class="property-main-image">
-  <div class="property-image-overlay"></div>
-</div>
+
 <div class="container mt-5">
   <div class="row">
     <div class="col-md-8">
       <div class="row">
         <div class="col-lg-6">
             <p class="mb-0 fw-bold">
-                <%= @account.full_name %>
-            </p>
-            <p class="mb-2"><%= @account.company_name %>
-            </p>
+                <%= @account.full_name %></p>
+            <p class="mb-2"><%= @account.company_name %></p>
         </div>
         <div class="col-lg-6 text-center">
             <div class="row mr-lg-3 mt-sm-3 bg-light p-2 rounded">
@@ -33,18 +28,16 @@
 
 
       <div class="row border-top mt-4 pt-4">
-       <div class="col">
-        <p class="h5">Description</p>
+        <div class="col">
+          <p class="h4">Description</p>
             <div id="description-wrapper" class="">
                 <%=  simple_format @account.description %>
             </div>
-        <button class="btn btn-outline-success mt-3" id="toggleDescriptionBtn">Read more</button>
         </div>
       </div>     
-    </div>
-    <div class="col-md-4">
-      <%= render 'properties/agent_info', agent: @account %>
-    </div>
+      <div class="col-md-4">
+        <%= render 'properties/agent_info', agent: @account %>
+      </div>
     </div>
   </div>
 </div>
@@ -53,7 +46,7 @@
   <div class="container">
     <div class="row">
       <div class="col-12">
-        <p class="h4 mb-4">All listings from <%= @account.first_name %></p>
+        <p class="h4 mb-4">listings from <%= @account.full_name %></p>
       </div>
       <%= render "properties/listings", properties: @properties.limit(3) %>
     </div>
