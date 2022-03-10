@@ -1,6 +1,7 @@
 class PropertiesController < ApplicationController
   before_action :set_property, only: %i[ show edit update destroy ]
   before_action :authenticate_account!, except: [:show, :email_agent, :view_all]
+  before_action :account_owns_property?, only: [:edit, :update, :detroy]
   before_action :set_sidebar, except: [:show]
    
 
@@ -15,10 +16,6 @@ class PropertiesController < ApplicationController
     end
 
     def new
-      if current_account.company_id == nil
-        redirect_to user_edit_path(current_user.id), :flash => { :error => "Cannot List a new Property without a Company" }
-        return
-      end
       @property = Property.new
     end
 
@@ -72,6 +69,19 @@ class PropertiesController < ApplicationController
         end
       end
 
+      def email_agent
+        agent_id = params[:agent_id]
+        name = params[:sender_name]
+        email = params[:sender_email]
+        message = params[:sender_message]
+    
+        ContactMailer.email_agent(agent_id, name, email, message).deliver_now
+    
+        respond_to do |format|
+          format.json { head :no_content }
+        end
+    
+      end
 
 
     private
@@ -90,7 +100,7 @@ class PropertiesController < ApplicationController
       
     def account_owns_property?
       if @property.account_id != current_account.id 
-        redirect_to properties_path, alert: "The property does not belong to you." and return
+        redirect_to properties_path, alert: "The property isnt yours." and return
       end
     end
 end
