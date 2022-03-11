@@ -1,7 +1,10 @@
 class ProfileController < ApplicationController
     before_action :is_invalid_profile?
    
-  
+    def view_all
+        @latest_properties = Property.avaliable.latest
+    end
+
     def index   
         @account = Account.find(params[:id])
         @properties = Property.where(account_id: @account.id)
