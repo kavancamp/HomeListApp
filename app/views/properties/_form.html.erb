@@ -26,16 +26,31 @@
         <%= form.text_area :description, class: "form-control" %>
     </div>
     <div class="form-group">
-        <%= form.label :available_date %>
-        <%= form.datetime :available_date, class: "form-control" %>
+        <%= form.label :for_sale %>
+        <%= form.select :for_sale, options_for_select({"Yes" => true, "No" => "false"}, @property.for_sale), class: "form-control" %>
     </div>
-    
+
+    <div class="form-group">
+        <% options = @property.for_sale? ? {"Avaliable" => "avaliable", "Sold" => "sold"} : {"Avaliable" => "avaliable", "Leased" => "leased"}  %>
+        <%= form.label :status %>
+        <%= form.select :status, options_for_select(options, @property.status), class: "form-control" %>
+    </div>
+
+    <% if !@property.for_sale?%>
+        <div class="form-group">
+            <%= form.label :avaliable_date %>
+            <%= form.date_field :avaliable_date, class: "form-control" %>
+         </div>
+    <% end %>
     <div class="form-group">   
         <%= form.label :photo %>
-        <%= form.file_field :photo %>
+        <%= form.file_field :photo, class: "form-control" %>
+    <% if @property.photo.present? %>
+        <%= image_tag @property.photo, :class => "btn btn-success" %>
+    <% end %>
     </div>
     
     <div class="actions">
-        <%= form.submit %>
+        <%= form.submit "Save", :class => "btn-success" %>
     </div>
 <% end %>
