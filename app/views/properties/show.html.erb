@@ -70,7 +70,11 @@
 
           <div class="row border-bottom border-top pt-3 mt-3 mb-4 pb-4">
             <div class="col-6">
+            <% if @property.for_sale && !@property.price.nil? %>
               <strong><%= link_to "Estimated Payments of #{ number_to_currency((@property.price - (@property.price * 0.1)) / 360,  precision: 0) } ", "#", class: "text-success" %> </strong>
+            <% else %>
+              <p>Avaliable <span class="fw-bold"><%= @property.avaliable_date.strftime("%a") %>, <%= @property.avaliable_date.day.ordinalize %> <%= @property.avaliable_date.strftime("%b") %></span></p>
+            <% end %>
             </div>
             <div class="col-6">
               <strong><%= link_to "Find out if you can afford this home", "#" %> </strong>
@@ -86,7 +90,7 @@
               </div>
             </div>
       
-          <div class="col-md-4 p-3">
+          <div class="col-md-4">
             <%= render "properties/agent_info", agent: @agent %>
           </div>
         </div>
@@ -103,5 +107,4 @@
         </div>
       </div>
     </section>
-        <%= render "properties/email_agent", agent: @agent %> 
-
+    <%= render "properties/email_agent", agent: @agent %>
