@@ -1,0 +1,13 @@
+<% @conversations.each do |conversation| %>
+    <% if conversation.sender_id == current_account.id || conversation.recipient_id == current_account.id %>
+     <% if conversation.sender_id == current_account.id %>
+       <% recipient = Account.find(conversation.recipient_id) %>
+     <% else %>
+       <% recipient = Account.find(conversation.sender_id) %>
+     <% end %>
+     <div class="border border-dark p-4 rounded mt-5">
+      <%= image_tag profile_picture(recipient), width: 150, class: "rounded-circle" %>
+      <%= link_to recipient.full_name.capitalize, conversation_messages_path(conversation), class: "h4 ml-2 text-decoration-none text-primary"%>
+     </div>
+    <% end %>
+   <% end %>
