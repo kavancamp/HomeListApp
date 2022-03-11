@@ -1,0 +1,18 @@
+<h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+  <span>User</span>
+  <a class="link-secondary" href="#">
+    <span data-feather="plus-circle"></span>
+  </a>
+</h6>
+<li class="nav-item">
+  <%= link_to properties_all_path, class: "nav-link" do %>
+    View Listings
+  <% end %>
+</li>
+<% if Conversation.count > 0 %>
+<li class="nav-item">
+  <%= link_to conversations_path, class: "nav-link" do %>
+    Conversations
+  <% end %>
+</li>
+<% end %>
