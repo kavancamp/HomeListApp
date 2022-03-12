@@ -10,7 +10,7 @@
     background-size: cover;
   }
 </style> 
-
+<div class="photo-overlay">
   <div id="myCarousel" class="carousel slide" data-ride="carousel"> 
     <% if @property.photo.present? %>
         <ol class="carousel-indicators">
@@ -41,16 +41,17 @@
         <span class="carousel-control-next-icon" aria-hidden="true"></span> 
       </a>
   </div>
+</div>
   <div class="container">
     <div class="row">
       <div class="col-8">
         <div class="row">
-          <div class="col-lg-6">
+          <div class="col-6">
             <p class="mb-0 fw-bold"><%= @property.for_sale? ? "For Sale" : "For Rent" %></p>
             <p class="mb-1"> <%=@property.address %><i class="fa-thin fa-map-pin"></i></p>
             <p class="h1"> <%= @property.price > 0 ? number_to_currency(@property.price, precision: 0) : "For Sale" %> </p>
           </div>
-          <div class="col-md-6 text-center bg-grey">
+          <div class="col-6 text-center bg-grey">
              <div class="row mr-lg-3 mt-sm-3 bg-light p-2 rounded">
                 <div class="col-4">
                   <p class ="m-0 fw-bold">Bedrooms</p>
@@ -66,37 +67,42 @@
           </div>
         </div>
 
-          <div class="row border-bottom border-top pt-3 mt-3 mb-4 pb-4">
-            <div class="col-6">
-            <% if @property.for_sale && !@property.price.nil? %>
-              <strong><%= link_to "Estimated Payments of #{ number_to_currency((@property.price - (@property.price * 0.1)) / 360,  precision: 0) } ", "#", class: "text-success" %> </strong>
-            <% else %>
-              <p>Avaliable <span class="fw-bold"><%= @property.avaliable_date.strftime("%a") %>, <%= @property.avaliable_date.day.ordinalize %> <%= @property.avaliable_date.strftime("%b") %></span></p>
-            <% end %>
-            </div>
-            <div class="col-6">
-              <strong><%= link_to "Find out if you can afford this home", "#" %> </strong>
-            </div>
+        <div class="row border-bottom border-top pt-3 mt-3 mb-4 pb-4">
+          <div class="col-6">
+          <% if @property.for_sale && !@property.price.nil? %>
+            <strong><%= link_to "Estimated Payments of #{ number_to_currency((@property.price - (@property.price * 0.1)) / 360,  precision: 0) } ", "#", class: "text-success" %> </strong>
+          <% else %>
+            <p>Avaliable <span class="fw-bold"><%= @property.avaliable_date.strftime("%a") %>, <%= @property.avaliable_date.day.ordinalize %> <%= @property.avaliable_date.strftime("%b") %></span></p>
+          <% end %>
           </div>
-          <div class="row">
-            <div class="col"> 
-              <p class="h3"> <%= @property.name %></p>
-              <p class="h4"> Description:</p>
-                <div id="property-description">
-                    <%= simple_format @property.description %>
-                </div>
-              </div>
-            </div>
-  
-    <section class="mt-5 mb-5">
-      <div class="container">
+          <div class="col-6">
+            <strong><%= link_to "Find out if you can afford this home", "#" %> </strong>
+          </div>
+        </div>
         <div class="row">
-         <div class="col-12">
-            <p class="p-2 h4">Other properties from <%= @agent.full_name %>
-            </p>
-         </div>
-         <%= render "properties/listings", properties: @agent.properties %>
+          <div class="col"> 
+            <p class="h3"> <%= @property.name %></p>
+            <p class="h4"> Description:</p>
+              <div id="property-description">
+                  <%= simple_format @property.description %>
+              </div>
+          </div>
         </div>
       </div>
-    </section>
+      <div class="col-md-4">
+       <%= render "/properties/agent_info", agent: @agent %>
+    </div>
+  </div>
+</div>
+  <section class="mt-5 mb-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <p class="p-2 h4">Other properties from <%= @agent.full_name %>
+          </p>
+        </div>
+        <%= render "properties/listings", properties: @agent.properties %>
+      </div>
+    </div>
+  </section>
     <%= render "properties/email_agent", agent: @agent %>

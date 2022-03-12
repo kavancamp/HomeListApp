@@ -1,25 +1,34 @@
+<div class="text-center border p-4 pb-4 rounded ml-lg-4 ml-5">
+    <div class="mb-2">
+        <%= image_tag profile_picture(agent), :class => "rounded-circle", width: 100 %>
+    </div>`
+    <h3 class="h4"><%= agent.full_name %></h2>
+    <p><%= agent.company_name %></p>
 
-    <div class="">
-        <% if agent.profile_picture.present? %>
-            <%= image_tag profile_picture(agent), class: "rounded-circle", width: '30%' %>
-        <% else %>
-            <%= image_tag("profile_picture_placeholder.jpeg", class: "rounded-circle", width: '30%' )%>
+    <div class="row">
+        <div class="col-12">
+            <div class="d-grid gap-2 mb-3 mr-2">
+                <button class="btn btn-long btn-info text-uppercase" style="color: white;" id="show-number" data-number="<%= agent.phone_number %>"><i class="fas fa-phone-square"></i> <span>Call now</span></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <% if controller.controller_name != "profile" %>
+            <div class="col-md-6 pr-1">
+                <div class="d-grid gap-2 mb-4 mr-2">
+                    <%= link_to "Profile", profile_path(agent.id), class: "btn btn-secondary text-uppercase" %>
+                </div>
+            </div>
         <% end %>
-        <h5><%= link_to agent.full_name, profile_path(agent.id) %></h5>
-        <button class="btn btn-info btn-block" id="show-tel" data-telephone="<%= agent.phone_number %>"><i class="fa fa-phone"></i> 
-            <span>Call</span>
-        </button>
-        <% if controller.controller_name != "profile" %>  
-        <%= link_to "Profile", profile_path(@agent.id), class: "btn btn-secondary text-uppercase" %>       
-        <% end %>
-  
-    <div class="<%= "col-md-6 mb-1" if controller.controller_name != "profile" %> pl-1">
-        <div class="d-grid gap-2 mb-4 mr-2">
-            <% if !account_signed_in? %>
-                <button data-bs-toggle="modal" data-bs-target="#email-agent" class="btn btn-success text-uppercase"><i class="fas fa-envelope-square"></i> Email</button>
-            <% else %>
-                <%= link_to "Message now", conversations_path(sender_id: current_account.id, recipient_id: agent.id), method: "post", class:"btn btn-success text-uppercase" %>
-            <% end %>
+        <div class="<%= "col-md-6" if controller.controller_name != "profile" %> pl-1">
+            <div class="d-grid gap-2 mb-4 mr-2">
+                <% if !account_signed_in? %>
+                    <button data-bs-toggle="modal" data-bs-target="#email-agent" class="btn btn-success text-uppercase"><i class="fas fa-envelope-square"></i> Email</button>
+                <% else %>
+                    <%= link_to "Message" , conversations_path(sender_id: current_account.id, recipient_id: agent.id), method: "post", class:"btn btn-success text-uppercase" %>
+                <% end %>
+            </div>
         </div>
     </div>
 </div>
