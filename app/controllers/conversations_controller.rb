@@ -1,7 +1,7 @@
 class ConversationsController < ApplicationController
     before_action :authenticate_account!  
     before_action :is_sender_recipitent?, only: [:create]
-    before_action :set_sidebar
+   
   
     def index
       @accounts = Account.all
