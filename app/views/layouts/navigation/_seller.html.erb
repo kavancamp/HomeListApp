@@ -14,3 +14,10 @@
     Create Property
   <% end %>
 </li>
+<% if Conversation.count > 0 %>
+<li class="nav-item">
+  <%= link_to conversations_path, class: "nav-link" do %>
+    Conversations
+  <% end %>
+</li>
+<% end %>
