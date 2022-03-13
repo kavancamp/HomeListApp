@@ -1,3 +1,4 @@
+<h4> Conversations: </h4>
 <% @conversations.each do |conversation| %>
     <% if conversation.sender_id == current_account.id || conversation.recipient_id == current_account.id %>
      <% if conversation.sender_id == current_account.id %>
