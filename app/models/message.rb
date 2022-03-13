@@ -4,4 +4,8 @@ class Message < ActiveRecord::Base
     has many :conversations, through: :account
 
     validates_presence_of :body, :conversation_id, :account_id
+
+    def message_time
+        created_at.strftime("%m/%d/%y at %l:%M %p")
+    end
 end
