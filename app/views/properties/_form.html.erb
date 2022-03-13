@@ -22,6 +22,10 @@
         <%= form.text_field :bathrooms, class: "form-control" %>
     </div>
     <div class="form-group">
+        <%= form.label :parking_spaces %>
+        <%= form.text_field :parking_spaces, class: "form-control" %>
+    </div>
+    <div class="form-group">
         <%= form.label :description %>
         <%= form.text_area :description, class: "form-control" %>
     </div>
@@ -35,21 +39,18 @@
         <%= form.label :status %>
         <%= form.select :status, options_for_select(options, @property.status), class: "form-control" %>
     </div>
-
-    <% if !@property.for_sale?%>
-        <div class="form-group">
-            <%= form.label :avaliable_date %>
-            <%= form.date_field :avaliable_date, class: "form-control" %>
-         </div>
-    <% end %>
-    <div class="form-group">   
-        <%= form.label :photo %>
-        <%= form.file_field :photo, class: "form-control" %>
-    <% if @property.photo.present? %>
-        <%= image_tag @property.photo, :class => "btn btn-success" %>
-    <% end %>
+    <div class="form-group">
+        <%= form.label :avaliable_date %>
+        <%= form.date_field :avaliable_date, class: "form-control" %>
     </div>
     
+    <div class="mb-3">
+        <%= form.label :photo, class: "form-label" %>
+        <%= form.file_field :photo, accept: 'image/png, image/jpg, image/jpeg', class: "form-control" %>
+            <% if @property.photo.present? %>
+        <%= image_tag @property.photo, :class => "mt-4 w-25" %>
+    <% end %>
+    </div>
     <div class="actions">
         <%= form.submit "Save", :class => "btn-success" %>
     </div>
