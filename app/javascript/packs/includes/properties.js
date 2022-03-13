@@ -5,6 +5,16 @@ $(function() {
     });
 
 
+    $("#toggleDescriptionBtn").on("click", function(){
+        const details = $("#description-wrapper");
+        details.toggleClass("open");
+        if(details.hasClass("open")){
+            $(this).text("Read less");
+        } else {
+            $(this).text("Read more");
+        }
+    });
+
     $("#send-email-to-agent").on("click", function(){
         const agentId = $("#agent_id").val();
         const senderName = $("#sender-name").val();
