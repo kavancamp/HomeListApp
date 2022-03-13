@@ -8,22 +8,48 @@
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
-  <div class="field">
-    <%= f.label :password %>
+  <div class="mb-3">
+    <%= f.label :first_name, "First name", class: "form-label" %>
+    <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class:"form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= f.label :last_name, "Last name", class: "form-label" %>
+    <%= f.text_field :last_name, autofocus: true, autocomplete: "first_name", class:"form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :role, "Buyer or Realtor?", class: "form-label" %>
+    <%= f.select :role, options_for_select({"Buyer" => "buyer", "Realtor" => "seller"}), {class: "form-select"} %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :phone_number, "Phone number", class: "form-label" %>
+    <%= f.text_field :phone_number, autofocus: true, autocomplete: "tel", class:"form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :password, class:"form-label" %>
+    <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+      <div id="passwordHelpBlock" class="form-text">
+        (<%= @minimum_password_length %> characters minimum)
+      </div>
+    <% end %>
+`</div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  <div class="mb-3">
+    <%= f.label :password_confirmation, class: "form-label" %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
   </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+  <% if devise_mapping.rememberable? %>
+    <div class="mb-3 form-check">
+      <%= f.check_box :remember_me, class:"form-check-input" %>
+      <%= f.label :remember_me, class:"form-check-label" %>
+    </div>
+  <% end %>
+    <%= f.submit "Sign up", class: "btn btn-primary" %>
+  <% end %>
   </div>
-<% end %>
-
+</div>
 <%= render "devise/shared/links" %>
+</div>
