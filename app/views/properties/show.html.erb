@@ -48,9 +48,10 @@
           <div class="col-6">
             <p class="mb-0 fw-bold"><%= @property.for_sale? ? "For Sale" : "For Rent" %></p>
             <p class="mb-2"><%=@property.address %></p>
-            <p class="h1 mb-3"><i class="fas fa-money-check-alt pt-3"></i><%= @property.price > 0 ? number_to_currency(@property.price, precision: 0) : "For Sale" %> </p>
-          </div>
-          <div class="col-lg-6 text-center ">
+            <p class="h1 mb-3"><i class="fas fa-money-check-alt pt-3"></i><%= @property.price > 0 ? number_to_currency(@property.price, precision: 0) : "For Sale" %> </p> <br>
+           </div> 
+           
+          <div class="col-lg-6 text-center">
             <div class="row mr-lg-3 mt-sm-3 bg-light p-2 rounded">
                 <div class="col-4">
                   <p class ="m-0 fw-bold">Bedrooms</p>
@@ -68,6 +69,10 @@
                   <span class="lead"><%= @property.parking_spaces %></span>
                 </div>
               </div>
+              <p class="h3">
+                <i class="fas fa-calendar"></i>
+              <%= @property.available_date %>
+              </p> 
           </div>
         </div>
 
