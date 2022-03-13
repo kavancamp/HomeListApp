@@ -10,7 +10,7 @@
         <%= form.text_field :address, class: "form-control" %>
     </div>
     <div class="form-group">
-        <%= form.label :price %>
+        <%= form.label :price, "Monthly Price (rental) / Or Total Cost" %>
         <%= form.text_field :price, class: "form-control" %>
     </div>
     <div class="form-group">
@@ -35,14 +35,17 @@
     </div>
 
     <div class="form-group">
-        <% options = @property.for_sale? ? {"Avaliable" => "avaliable", "Sold" => "sold"} : {"Avaliable" => "avaliable", "Leased" => "leased"}  %>
+        <% options = @property.for_sale? ? {"Available" => "available", "Sold" => "sold"} : {"Available" => "available", "Leased" => "leased"}  %>
         <%= form.label :status %>
         <%= form.select :status, options_for_select(options, @property.status), class: "form-control" %>
     </div>
-    <div class="form-group">
-        <%= form.label :avaliable_date %>
-        <%= form.date_field :avaliable_date, class: "form-control" %>
-    </div>
+
+    <% if @property.for_sale?%>
+        <div class="form-group">
+        <%= form.label :available_date %>
+        <%= form.date_field :available_date, class: "form-control" %>
+        </div>
+    <% end %>
     
     <div class="mb-3">
         <%= form.label :photo, class: "form-label" %>
