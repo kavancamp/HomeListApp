@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get "/dashboard" => 'dashboard#index', as: :dashboard
   get '/search', to: "properties#search"
   get 'profile/:id', to: 'profile#index', as: :profile
-  get 'properties/all', to: "properties#view_all"
+  get 'properties/view/all', to: "properties#all"
   post 'agent/email', to: "properties#email_agent"
   resources :conversations do
     resources :messages
