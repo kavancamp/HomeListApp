@@ -5,14 +5,7 @@
   </a>
 </h6>
 <li class="nav-item">
-  <%= link_to properties_all_path, class: "nav-link" do %>
-    View Listings
-  <% end %>
-</li>
-<% if Conversation.count > 0 %>
-<li class="nav-item">
   <%= link_to conversations_path, class: "nav-link" do %>
     Conversations
   <% end %>
 </li>
-<% end %>
