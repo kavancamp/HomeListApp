@@ -4,14 +4,14 @@
       <% if current_account.admin? %>
           <%= render "layouts/navigation/admin" %>
         <% end %>
-      <% if current_account.role == "seller" %>
-          <%= render "layouts/navigation/seller" %>
+      <% if current_account.role == "realtor" %>
+          <%= render "layouts/navigation/realtor" %>
        <% else %>
       <%= render "layouts/navigation/user" %>  
     <% end %>
     </ul>
     <ul class="nav flex-column mb-2 text-muted">
-      <% if current_account.role == "seller" %>
+      <% if current_account.role == "realtor" %>
         <li class="nav-item">
           <%= link_to "Profile", profile_path(current_account), class: "nav-link" do %>
             View Profile
