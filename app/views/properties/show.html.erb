@@ -1,14 +1,14 @@
 <!--Bootstrap Carousel Slider --> 
-<style> 
-  .carousel-item{
+<style>
+  .carousel-item {
     height: 30rem;
     width: 100%;
     background: #777;
     position: relative;
-    background-position: center;
+    background-position-y: center;
     background-size: cover;
   }
-</style> 
+  </style>
 <div class="photo-overlay">
   <div id="myCarousel" class="carousel slide" data-ride="carousel"> 
     <% if @property.photo.present? %>
@@ -77,7 +77,7 @@
           <div class="col-6">
             <% if @property.for_sale && !@property.price.nil? %>
               <strong><%= link_to "Estimated Payments of #{ number_to_currency((@property.price - (@property.price * 0.1)) / 360,  precision: 0) } ", "#", class: "text-success" %> </strong>
-              <p> <i class="fas fa-calendar"></i>Avaliable <span class="fw-bold"><%= @property.available_date.strftime("%a") %> the <%= @property.available_date.day.ordinalize %> <%= @property.available_date.strftime("%b") %></span></p>
+              <p> <i class="fas fa-calendar"></i>Avaliable <%= @property.available_date %> </p>
             <% end %>
             </div>
             <div class="col-6">
