@@ -4,11 +4,20 @@
       <h2>Edit <%= resource_name.to_s.humanize %></h2>
     </div>
 
-<section class="card-body" style="width: 30rem;">
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <div class="card-body">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
-   
-    
+
+    <div class="mb-3">
+      <%= f.label :first_name, "First name", class: "form-label" %>
+      <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class:"form-control" %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :last_name, "Last name", class: "form-label" %>
+      <%= f.text_field :last_name, autofocus: true, autocomplete: "first_name", class:"form-control" %>
+    </div>
+
     <div class="mb-3">
       <%= f.label :email, "Email address", class: "form-label" %>
       <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
@@ -17,83 +26,72 @@
       <% end %>
     </div>
 
-    <div class="form-group mb-3">
-      <%= f.label :first_name %><br />
-      <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class:"form-control" %>
-    </div>
-
-    <div class="form-group mb-3">
-      <%= f.label :last_name %><br />
-      <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class:"form-control" %>
-    </div> 
-
-    <div class="form-group mb-3">
-      <%= f.label :company_name %><br />
-      <%= f.text_field :company_name, class: "form-control" %>
-    </div> 
-
     <div class="mb-3">
       <%= f.label :phone_number, "Phone number", class: "form-label" %>
       <%= f.text_field :phone_number, autofocus: true, autocomplete: "tel", class:"form-control" %>
-    </div> 
+    </div>
 
     <div class="mb-3">
       <%= f.label :role, "Buyer or Realtor?", class: "form-label" %>
-      <%= f.select :role, options_for_select({"Buyer" => "buyer", "Realtor" => "seller"}, @account.role), {class: "form-select"}%>
+      <%= f.select :role, options_for_select({"Buyer" => "buyer", "Realtor" => "Realtor"}, @account.role), {class: "form-select"}%>
     </div>
-    <% if @account.role == "seller" %>
+
+    <% if @account.role == "Realtor" %>
       <div class="mb-3">
         <%= f.label :company_name, "Company name", class: "form-label" %>
         <%= f.text_field :company_name, autofocus: true, autocomplete: "company_name", class:"form-control" %>
       </div>
-    `<div class="mb-3">
-      <%= f.label :description, "Profile Description", class: "form-label" %>
-      <%= f.text_area :description, autofocus: true, autocomplete: "description", class:"form-control" %>
-    `</div>`
+
+      <div class="mb-3">
+        <%= f.label :description, "Profile Description", class: "form-label" %>
+        <%= f.text_area :description, autofocus: true, autocomplete: "description", class:"form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= f.label :profile_picture, class: "form-label" %>
+        <%= f.file_field :profile_picture, accept: 'image/png, image/jpg, image/jpeg', class: "form-control" %>
+        <% if @account.profile_picture.present? %>
+          <%= image_tag @account.profile_picture, :class => "mt-4 w-25" %>
+        <% end %>
+      </div>
+
+    <% end %>
+
     <div class="mb-3">
-      <%= f.label :profile_picture, class: "form-label" %>
-      <%= f.file_field :profile_picture, accept: 'image/png, image/jpg, image/jpeg', class: "form-control" %>
-      <% if @account.profile_picture.present? %>
-        <%= image_tag @account.profile_picture, :class => "mt-4 w-25" %>
-      <% end %>
-    </div>
-
-    <div class="form-group mb-3">
-      <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-      <%= f.password_field :password, autocomplete: "new-password" %>
+      <%= f.label :password, class:"form-label" %>
+      <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
       <% if @minimum_password_length %>
-        <br />
-        <em><%= @minimum_password_length %> characters minimum</em>
+        <div id="passwordHelpBlock" class="form-text">
+          (<%= @minimum_password_length %> characters minimum)
+        </div>
       <% end %>
     </div>
 
-    <div class="form-group mb-3">
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <div class="mb-3">
+      <%= f.label :password_confirmation, class: "form-label" %> <i>(leave blank if you don't want to change it)</i>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
     </div>
 
-    <div class="form-group mb-3">
-      <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-      <%= f.password_field :current_password, autocomplete: "current-password" %>
+    <div class="mb-3">
+      <%= f.label :current_password, class: "form-label" %> <i>(we need your current password to confirm your changes)</i>
+      <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control" %>
     </div>
-
-    <div class="actions mb-3">
-      <%= f.submit "Update", class: "btn btn-success mt-2" %>
+    <%= f.submit "Update", class: "btn btn-primary" %>
+    <% end %>
     </div>
-  <% end %>
-
-  <h3>Cancel my account</h3>
-  <%= link_to "Back", :back %>
+  </div>
+</div>
+    <%= link_to "Back", :back %>
 </section>
 <div class="container mt-5">
   <div class="card">
-    <div class="card-header">
-      Delete my account
-    </div>
-    <div class="card-body">
-      <h5 class="card-title">Unhappy?</h5>
-      <p class="card-text">Note: This will permanently delete your account and sign you out.</p>
-      <%= button_to "Delete my account", registration_path(resource_name), class: "btn btn-danger", data: { confirm: "Are you sure?" }, method: :delete %></p>
-    </div>
+      <div class="card-header">
+        Delete my account
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Unhappy?</h5>
+        <p class="card-text">Note: This will permanently delete your account and sign you out.</p>
+        <%= button_to "Delete my account", registration_path(resource_name), class: "btn btn-danger", data: { confirm: "Are you sure?" }, method: :delete %></p>
+      </div>
   </div>
 </div>
