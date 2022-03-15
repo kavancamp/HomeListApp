@@ -1,9 +1,8 @@
 $(function() {
     $("#show-number").on("click", function(){
-        var $this = $(this);
+         $this = $(this);
         $this.find("span").text($this.data("number"));  
     });
-
 
     $("#send-email-to-agent").on("click", function(){
         const agentId = $("#agent_id").val();
@@ -30,9 +29,6 @@ $(function() {
         });
     });
 
-
-
-
     var exampleModal = document.getElementById('email-agent')
     exampleModal.addEventListener('show.bs.modal', function (event) {
         var button = event.relatedTarget
@@ -40,6 +36,5 @@ $(function() {
         var modalTitle = exampleModal.querySelector('.modal-title')
         var modalBodyInput = exampleModal.querySelector('.modal-body input')
     });
-
 
 });

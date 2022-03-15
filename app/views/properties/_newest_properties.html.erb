@@ -1,6 +1,6 @@
 <% @properties.each do |property| %>
    <div class="col-4">  
-      <div class="border">
+      <div class="border mt-3">
       
          <%= link_to property_path(property) do %>
             <%= property_thumbnail(property) %>
@@ -12,11 +12,11 @@
          </h4>
             <p><%= property.address %></p>
             <span class="p-3 mr-2">
-               <i class="fa-thin fa-shower"></i>
+               <i class="fas fa-shower"></i>
                <%= property.bathrooms %>
             </span>
             <span class="p-3 mr-2">
-               <i class="fa-thin fa-bed"></i>
+               <i class="fas fa-bed"></i>
                <%= property.bedrooms %>
             </span>
          </div>

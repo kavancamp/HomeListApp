@@ -9,6 +9,7 @@
           <li class="nav-item">
             <% if account_signed_in? %>
               <%= link_to "Dashboard", dashboard_path, class: "nav-link" %>
+              <use xlink:href="#speedometer2"></use>
             </li>
             <% else %>
           <li class="nav-item">
@@ -31,4 +32,3 @@
     </div>
   </div>
 </nav>
-
