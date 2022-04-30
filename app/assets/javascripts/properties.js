@@ -29,12 +29,12 @@ $(function() {
         });
     });
 
-    var exampleModal = document.getElementById('email-agent')
+    let exampleModal = document.getElementById('email-agent')
     exampleModal.addEventListener('show.bs.modal', function (event) {
-        var button = event.relatedTarget
-        var recipient = button.getAttribute('data-bs-whatever')
-        var modalTitle = exampleModal.querySelector('.modal-title')
-        var modalBodyInput = exampleModal.querySelector('.modal-body input')
+        let button = event.relatedTarget
+        let recipient = button.getAttribute('data-bs-whatever')
+        let modalTitle = exampleModal.querySelector('.modal-title')
+        let modalBodyInput = exampleModal.querySelector('.modal-body input')
     });
 
 });
